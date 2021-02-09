@@ -35,12 +35,12 @@ body {
   height: -moz-max-content;
   height: max-content;
   margin: auto;
-  padding: 40px 20px;
+  padding: 0 20px;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (max-width: 600px) {
   .container {
-    padding: 0px;
+    padding: 40px 20px;
   }
 }
 
@@ -50,9 +50,52 @@ body {
   display: grid;
   -ms-grid-rows: minmax(250px, 1fr);
       grid-template-rows: minmax(250px, 1fr);
-  -ms-grid-columns: (1fr)[auto-fit];
-      grid-template-columns: repeat(auto-fit, 1fr);
   grid-gap: 25px;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+}
+
+.container ul .wide {
+  grid-column: span 2 / auto;
+}
+
+.container ul .wide-two {
+  grid-column: span 2 / auto;
+}
+
+.container ul .tall {
+  grid-row: span 2 / auto;
+}
+
+@media screen and (max-width: 1080px) {
+  .container ul {
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+  }
+  .container ul .tall {
+    grid-column: span 2 / auto;
+    grid-row: unset;
+  }
+  .container ul .wide-two {
+    grid-column: span 3 / auto;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container ul {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+  }
+  .container ul .wide {
+    grid-column: unset;
+  }
+  .container ul .tall {
+    grid-row: unset;
+    grid-column: unset;
+  }
+  .container ul .wide-two {
+    grid-column: unset;
+  }
 }
 
 .container ul .card {
@@ -60,10 +103,10 @@ body {
   -webkit-box-shadow: 30px 30px 30px #00000010;
           box-shadow: 30px 30px 30px #00000010;
   padding: 25px;
+  min-height: 100%;
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
-  min-height: 100%;
   background-color: white;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -122,16 +165,10 @@ body {
   position: absolute;
   background: url(/images/bg-pattern-quotation.svg) no-repeat;
   top: 0;
-  right: 20px;
+  right: 10%;
   height: 100px;
   width: 100px;
   z-index: -1;
-}
-
-@media screen and (min-width: 600px) {
-  .container ul .moderate-violet::after {
-    right: 100px;
-  }
 }
 
 .container ul .very-dark-grayish-blue {
@@ -146,19 +183,6 @@ body {
 
 .container ul .very-dark-blackish-blue img {
   border: 2px solid #7541c8;
-}
-
-@media screen and (min-width: 600px) {
-  .container ul {
-    -ms-grid-columns: (1fr)[4];
-        grid-template-columns: repeat(4, 1fr);
-  }
-  .container ul .wide {
-    grid-column: span 2 / auto;
-  }
-  .container ul .tall {
-    grid-row: span 2 / auto;
-  }
 }
 
 .attribution {

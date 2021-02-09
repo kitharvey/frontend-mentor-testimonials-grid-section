@@ -5,25 +5,63 @@
     width: 100%;
     height: max-content;
     margin: auto;
-    padding: 40px 20px;
+    padding: 0 20px;
 
-    @media screen and (min-width: 600px) {
-        padding: 0px;
+    @media screen and (max-width: 600px) {
+        padding: 40px 20px;
     }
 
     ul{
         list-style-type: none;
         display: grid;
         grid-template-rows: minmax(250px, 1fr);
-        grid-template-columns: repeat(auto-fit, 1fr );
+
+
+
+        .wide{
+            grid-column: span 2 / auto;
+        }
+        .wide-two{
+            grid-column: span 2 / auto;
+        }
+        .tall{
+            grid-row: span 2 / auto;
+        }
         grid-gap: 25px;
+        grid-template-columns: repeat(4, 1fr );
+
+        @media screen and (max-width: 1080px) {
+            grid-template-columns: repeat(3, 1fr );
+            .tall{
+                grid-column: span 2 / auto;
+                grid-row: unset;
+            }
+            .wide-two{
+                grid-column: span 3 / auto;
+            }
+        }
+        @media screen and (max-width: 767px) {
+            .wide{
+                grid-column: unset;
+            }
+            .tall{
+                grid-row: unset;
+                grid-column: unset;
+            }
+            .wide-two{
+                grid-column: unset;
+            }
+            grid-template-columns: repeat(1, 1fr );
+        }
+
+        
 
         .card{
             border-radius: 6px;
             box-shadow: 30px 30px 30px #00000010;
             padding: 25px;
-            height: max-content;
             min-height: 100%;
+            height: max-content;
             background-color: $white;
             display: flex;
             flex-direction: column;
@@ -73,14 +111,10 @@
                 position: absolute;
                 background: url(/images/bg-pattern-quotation.svg) no-repeat;
                 top: 0;
-                right: 20px;
+                right: 10%;
                 height: 100px;
                 width: 100px;
                 z-index: -1;
-
-                @media screen and (min-width: 600px) {
-                    right: 100px;
-                }
             }
 
         }
@@ -103,15 +137,7 @@
 
 
 
-        @media screen and (min-width: 600px) {
-            grid-template-columns: repeat(4, 1fr );
-            .wide{
-                grid-column: span 2 / auto;
-            }
-            .tall{
-                grid-row: span 2 / auto;
-            }
-        }
+
 
 
 
